@@ -21,7 +21,7 @@ void main() {
           'Given UserModelRepository class When the getUser method is called and status code is 200 Then UserModel should be returned',
           () async {
         //arrange
-        //Stub and Verify Behavior
+        //stubbing
         when(() => mockHttpClient
                 .get(Uri.parse('https://jsonplaceholder.typicode.com/users/1')))
             .thenAnswer((invocation) async => Response(
@@ -46,7 +46,7 @@ void main() {
       //stubbing
       when(() => mockHttpClient
               .get(Uri.parse('https://jsonplaceholder.typicode.com/users/1')))
-          .thenAnswer((invocation) async => Response('{}', 500));
+          .thenAnswer((invocation) async => Response('''{}''', 500));
       //act
       final user = userModelRepository.getUser();
       //assert
